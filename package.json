@@ -9,6 +9,10 @@
   "bin": {
     "club-imports": "lib/main.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tech4gt/clubImports"
+  },
   "author": "Varun Gupta <varun.gupta1798@gmail.com>",
   "license": "ISC",
   "devDependencies": {
