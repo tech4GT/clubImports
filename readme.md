@@ -24,7 +24,7 @@ import { myOtherSuperInterface } from 'something'
 
 ```ts
 // myfile.ts after processing
-import { mySuperInterface, myOtherSuperInterface } from 'something'
+import { mySuperInterface, myOtherSuperInterface } from 'something';
 
 
 /*
