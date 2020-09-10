@@ -1,17 +1,15 @@
 {
-  "name": "clubimports",
+  "name": "club-imports",
   "version": "1.0.0",
-  "description": "",
+  "description": "A CLI utility to club your typesctipt imports",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
-    "process": "node dist/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "bin": {
     "club-imports": "lib/main.js"
   },
-  "author": "Varun Gupta <varun.gupta1798@gmail.com> (http://codingblocks.com)",
+  "author": "Varun Gupta <varun.gupta1798@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^14.10.0",
