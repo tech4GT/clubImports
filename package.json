@@ -1,6 +1,6 @@
 {
   "name": "club-imports",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A CLI utility to club your typesctipt imports",
   "main": "lib/main.js",
   "scripts": {
