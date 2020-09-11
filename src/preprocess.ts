@@ -14,6 +14,9 @@ export default async (path: string) => {
 
     for (const line of file.split("\n")) {
 
+        if (line === '')
+            continue;
+
         if (!line.startsWith("import"))
             break;
 
