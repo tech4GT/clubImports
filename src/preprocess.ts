@@ -7,9 +7,9 @@ import { importType, moduleObject, importMapObject } from './types';
 * - package names are similar to module names in addition to @, _, -, /
 */
 
-export default async (path: string) => {
+export default (path: string) => {
 
-    const file = await fs.readFileSync(path, 'utf8');
+    const file = fs.readFileSync(path, 'utf8');
     const importMap: importMapObject = {};
 
     for (const line of file.split("\n")) {

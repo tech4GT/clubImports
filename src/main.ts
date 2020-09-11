@@ -7,32 +7,28 @@ import writeImports from './writeImports';
 import { exit } from 'process';
 import postprocess from './postprocess';
 
-(async () => {
+program
+    .option('-s, --sort', 'sort the import lines')
+    .option('-g, --group', 'group npm and local imports separately')
+    .option('-f, --file <path>', 'Path to your typescript file');
 
-    program
-        .option('-s, --sort', 'sort the import lines')
-        .option('-g, --group', 'group npm and local imports separately')
-        .option('-f, --file <path>', 'Path to your typescript file');
+program.parse(process.argv);
 
-    program.parse(process.argv);
+if (!program.file) {
+    console.error("No file specified");
+    exit(1);
+}
 
-    if (!program.file) {
-        console.error("No file specified");
-        exit(1);
-    }
+const fileName = program.file;
 
-    const fileName = program.file;
+console.log(`Processing file ${fileName}\n\n`);
 
-    console.log(`Processing file ${fileName}\n\n`);
+const importMap = preprocess(fileName);
 
-    const importMap = await preprocess(fileName);
+const output = postprocess(generateImports(importMap), program.opts());
 
-    const output = postprocess(generateImports(importMap), program.opts());
+console.log(`Imports generated:\n${output}\n\n`);
 
-    console.log(`Imports generated:\n${output}\n\n`);
+writeImports(fileName, output);
 
-    await writeImports(fileName, output);
-
-    console.log("Done!");
-
-})();
+console.log("Done!");
