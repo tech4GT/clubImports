@@ -26,6 +26,6 @@ export default (importMap: importMapObject) => {
 
     }
 
-    return output;
+    return output.slice(0, -2);
 
 }

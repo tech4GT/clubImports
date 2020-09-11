@@ -14,7 +14,7 @@ export default (imports: string, options: { [key: string]: any }): string => {
         importArray = importArray.map(el => sort(el));
     }
 
-    return importArray.join("\n\n") + "\n";
+    return importArray.join("\n\n") + "\n\n";
 
 }
 
@@ -23,12 +23,10 @@ const sort = (str: string) => {
 }
 
 const group = (imports: string) => {
-    console.log(imports);
 
     const obj: importLocationObject = { 0: [], 1: [] };
 
     for (const line of imports.split("\n")) {
-        console.log(line);
         if (line.startsWith("import"))
             obj[determineImportLocation(line) === importLocation.LOCAL ? 1 : 0].push(line);
     }
