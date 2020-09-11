@@ -7,7 +7,15 @@ This is a command line utility for clubbing typescript imports in your files.
 
 
 ## Usage (CLI)
-`club-imports <Path to your awesome typescript file>`
+```shell
+club-imports [Options]
+
+Options:
+  -s, --sort         sort the import lines
+  -g, --group        group npm and local imports separately
+  -f, --file <path>  Path to your typescript file
+  -h, --help         display help for command
+```
 
 
 ```ts
