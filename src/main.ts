@@ -1,24 +1,33 @@
 #!/usr/bin/env node
+import { program } from 'commander';
 
 import preprocess from './preprocess';
 import generateImports from './generateImports';
 import writeImports from './writeImports';
-
-/*
-* Would not work with relative file paths
-*/
+import { exit } from 'process';
+import postprocess from './postprocess';
 
 (async () => {
 
-    const fileName = process.argv[2];
+    program
+        .option('-s, --sort', 'sort the import lines')
+        .option('-g, --group', 'group npm and local imports separately')
+        .option('-f, --file <path>', 'Path to your typescript file');
+
+    program.parse(process.argv);
+
+    if (!program.file) {
+        console.error("No file specified");
+        exit(1);
+    }
+
+    const fileName = program.file;
 
     console.log(`Processing file ${fileName}\n\n`);
 
     const importMap = await preprocess(fileName);
 
-    // console.log(importMap);
-
-    const output = generateImports(importMap);
+    const output = postprocess(generateImports(importMap), program.opts());
 
     console.log(`Imports generated:\n${output}\n\n`);
 
